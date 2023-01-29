@@ -9,6 +9,8 @@ local modules = {
   "lualine",
   "nvim-tree",
   "zen-mode",
+  "tokyonight",
+  "colorscheme",
 }
 
 for i in ipairs(modules) do

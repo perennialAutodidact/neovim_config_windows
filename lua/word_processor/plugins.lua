@@ -84,12 +84,15 @@ return packer.startup(function(use)
   -- nvim-tree file explorer
   use({
     "nvim-tree/nvim-tree.lua",
-    requires = { "nvim-tree/nvim-web-devicons" },
+    requires = { "nvim-tree/nvim-web-devicons" }, 
     tag = "nightly",
     config = function() 
       require("nvim-tree").setup()
     end,
   })
+
+  -- color schemes
+  use("folke/tokyonight.nvim")
 
   if PACKER_BOOTSTRAP then
     require("packer").sync()
