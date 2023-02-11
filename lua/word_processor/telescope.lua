@@ -16,12 +16,8 @@ telescope.setup({
 		selection_caret = " ",
 		path_display = { "smart" },
 
-    mappings = {
-      
-  },
-
-  pickers = {},
-
-  extensions = {},
+    mappings = {},
+    pickers = {},
+    extensions = {},
   }
 })

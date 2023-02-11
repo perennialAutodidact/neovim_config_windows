@@ -63,7 +63,13 @@ return packer.startup(function(use)
   -- telescope
   use {
     "nvim-telescope/telescope.nvim", tag = "0.1.1", 
-    requires = { {'nvim-lua/plenary.nvim'} }
+    requires = {
+      { "nvim-lua/plenary.nvim" },
+      { "nvim-telescope/telescope-live-grep-args.nvim" },
+    },
+    config = function()
+      require("telescope").load_extension("live_grep_args")
+    end
   }
   use("nvim-telescope/telescope-media-files.nvim")
   use("nvim-telescope/telescope-symbols.nvim")
@@ -80,6 +86,9 @@ return packer.startup(function(use)
       require("true-zen").setup()
     end
   })
+
+  -- word processing
+  use("preservim/vim-pencil")
   
   -- nvim-tree file explorer
   use({
@@ -91,8 +100,43 @@ return packer.startup(function(use)
     end,
   })
 
+  -- treesitter
+  use({
+    "nvim-treesitter/nvim-treesitter",
+    run = ":TSUpdate"
+  })
+  use("p00f/nvim-ts-rainbow")
+
   -- color schemes
   use("folke/tokyonight.nvim")
+
+  -- LSP
+  use("neovim/nvim-lspconfig") -- enable lsp
+  use("williamboman/nvim-lsp-installer") -- simple to use language server installer
+  use({
+    "jose-elias-alvarez/null-ls.nvim",
+    config = function()
+        require("null-ls").setup()
+    end,
+    requires = { "nvim-lua/plenary.nvim" },
+  }) 
+
+  -- cmp
+  use("hrsh7th/nvim-cmp") ---------- the completion plugin
+  use("hrsh7th/cmp-buffer") -------- buffer completions
+  use("hrsh7th/cmp-path") ---------- path completions
+  use("hrsh7th/cmp-cmdline") ------- command line completions
+  use("saadparwaiz1/cmp_luasnip") -- snippet completions
+  use("hrsh7th/cmp-nvim-lsp")
+  use("hrsh7th/cmp-calc")
+  use("hrsh7th/cmp-emoji")
+  use("hrsh7th/cmp-nvim-lua")
+  use("f3fora/cmp-spell")
+  use("uga-rosa/cmp-dictionary")
+
+  -- snippets
+  use("L3MON4D3/LuaSnip")
+  use("rafamadriz/friendly-snippets")
 
   if PACKER_BOOTSTRAP then
     require("packer").sync()

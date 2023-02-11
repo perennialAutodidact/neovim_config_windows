@@ -11,6 +11,9 @@ local modules = {
   "zen-mode",
   "tokyonight",
   "colorscheme",
+  "treesitter",
+  "pencil",
+  "cmp",
 }
 
 for i in ipairs(modules) do

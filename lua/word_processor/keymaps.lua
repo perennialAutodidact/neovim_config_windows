@@ -1,6 +1,6 @@
 local opts = { noremap = true }
 
--- shorten function name
+-- shorten keymap function name
 local keymap = vim.api.nvim_set_keymap
 
 -- remap space as leader key
@@ -40,6 +40,14 @@ keymap("n", "<leader>-", ":split<CR>", opts)
 
 -- Nvim Tree
 
+-- True Zen Mode
+keymap("n", "<leader>zn", ":TZNarrow<CR>", opts)
+
+-- Telescope
+keymap("n", "<leader>ff", ":Telescope find_files<CR>", {})
+keymap("n", "<leader>fg", ":Telescope live_grep<CR>", {})
+keymap("n", "<leader>fb", ":Telescope buffers<CR>", {})
+keymap("n", "<leader>fh", ":Telescope help_tags<CR>", {})
 
 -------------
 -- Command --
@@ -49,4 +57,8 @@ keymap("n", "<leader>-", ":split<CR>", opts)
 keymap("n", ";", ":", opts)
 keymap("v", ";", ":", opts)
 
+-- autoformat text and markdown files 
+keymap("n", "<leader>ll", "gggqG", opts)
 
+-- Cancel search highlighting with ESC
+keymap("n", "<ESC>", ":nohlsearch<Bar>:echo<CR>", opts)

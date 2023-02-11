@@ -6,12 +6,15 @@ end
 true_zen.setup({
   modes = {
     ataraxis = {
-        shade = "dark",
-        backdrop = 0,
-        minimum_writing_area = {
-          width = 100,
-          height = 50
-        },
+      shade = "dark",
+      backdrop = 0,
+      minimum_writing_area = {
+        width = 120,
+        height = 50,
+      },
+    },
+    narrow = {
+      ataraxis = true,
     },
   }
 })
