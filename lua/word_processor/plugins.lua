@@ -61,6 +61,7 @@ return packer.startup(function(use)
   }
   
   -- telescope
+  use {"nvim-telescope/telescope-live-grep-args.nvim"}
   use {
     "nvim-telescope/telescope.nvim", tag = "0.1.1", 
     requires = {

@@ -39,7 +39,7 @@ local options = {
 vim.cmd([[
 augroup text_width
   au!
-  autocmd BufRead,BufNewFile *.txt, *md setlocal textwidth=80
+  autocmd BufRead,BufNewFile txt, md setlocal textwidth=80
   autocmd FileType markdown, mkd call pencil#init()
   autocmd FileType text, txt     call pencil#init()
 augroup END

@@ -6,14 +6,15 @@ local modules = {
   "keymaps",
   "plugins",
   "telescope",
+  "treesitter",
   "lualine",
-  "nvim-tree",
+  -- "nvim-tree",
+  "null-ls",
   "zen-mode",
   "tokyonight",
   "colorscheme",
-  "treesitter",
-  "pencil",
-  "cmp",
+  -- "pencil",
+  -- "cmp",
 }
 
 for i in ipairs(modules) do
