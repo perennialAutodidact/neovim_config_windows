@@ -49,6 +49,9 @@ keymap("n", "<leader>fg", ":Telescope live_grep<CR>", {})
 keymap("n", "<leader>fb", ":Telescope buffers<CR>", {})
 keymap("n", "<leader>fh", ":Telescope help_tags<CR>", {})
 
+-- Which Key
+keymap("n", "<leader>wk", ":WhichKey<CR>", opts)
+
 -------------
 -- Command --
 -------------
@@ -56,6 +59,11 @@ keymap("n", "<leader>fh", ":Telescope help_tags<CR>", {})
 -- semicolon for entering command mode
 keymap("n", ";", ":", opts)
 keymap("v", ";", ":", opts)
+
+-- quicker save & quit
+keymap("n", "<leader>w", ":w!<CR>", opts)
+keymap("n", "<leader>q", ":wq<CR>", opts)
+keymap("n", "<leader>Q", ":q!<CR>", opts)
 
 -- autoformat text and markdown files 
 keymap("n", "<leader>ll", "gggqG", opts)

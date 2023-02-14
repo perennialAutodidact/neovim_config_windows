@@ -58,9 +58,23 @@ local kind_icons = {
 	TypeParameter = "",
 }
 
-require("cmp_dictionary").setup()
+vim.api.nvim_create_autocmd({"FileType"}, {
+  pattern = "*",
+  callback = function()
+    -- print(vim.bo.filetype)
+    vim.g.enable_cmp = vim.bo.filetype ~= 'markdown'
+  end
+})
+
+
+-- add additionary dictionary config...
+-- https://github.com/uga-rosa/cmp-dictionary/wiki/Examples-of-usage
+require("cmp_dictionary").setup({})
 
 cmp.setup({
+  enabled = function()
+    return vim.g.enable_cmp
+  end,
   snippet = {
     expand = function(args)
       luasnip.lsp_expand(args.body) -- for luasnip users
@@ -74,7 +88,51 @@ cmp.setup({
     }
 
   },
-  mapping = {},
+mapping = {
+		["<C-k>"] = cmp.mapping.select_prev_item(),
+
+		["<C-j>"] = cmp.mapping.select_next_item(),
+		["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
+		["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
+		["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
+		["<C-y>"] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
+		["<C-e>"] = cmp.mapping({
+			i = cmp.mapping.abort(),
+			c = cmp.mapping.close(),
+		}),
+
+		-- Accept currently selected item. If none selected, `select` first item.
+		-- Set `select` to `false` to only confirm explicitly selected items.
+		["<CR>"] = cmp.mapping.confirm({ select = true }),
+		["<Tab>"] = cmp.mapping(function(fallback)
+			if cmp.visible() then
+				cmp.select_next_item()
+			elseif luasnip.expandable() then
+				luasnip.expand()
+			elseif luasnip.expand_or_jumpable() then
+				luasnip.expand_or_jump()
+			elseif copilot_keys ~= "" and type(copilot_keys) == "string" then
+				vim.api.nvim_feedkeys(copilot_keys, "i", true)
+			else
+				fallback()
+			end
+		end, {
+			"i",
+			"s",
+		}),
+		["<S-Tab>"] = cmp.mapping(function(fallback)
+			if cmp.visible() then
+				cmp.select_prev_item()
+			elseif luasnip.jumpable(-1) then
+				luasnip.jump(-1)
+			else
+				fallback()
+			end
+		end, {
+			"i",
+			"s",
+		}),
+	},
   formatting = {
     fields = { "kind", "abbr", "menu" },
     format = function(entry, vim_item)
@@ -99,3 +157,4 @@ cmp.setup({
   confirm_opts = {},
   experimental = {},
 })
+

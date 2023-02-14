@@ -1,6 +1,9 @@
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
+-- do not source the default filetypes.vim
+vim.g.did_load_filetypes = 1
+
 local modules = {
   "options",
   "keymaps",

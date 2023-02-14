@@ -13,3 +13,4 @@ for i in ipairs(modules) do
 end
 
 require("kg.word_processor.lsp.handlers").setup()
+-- require("kg.word_processor.lsp.null-ls")

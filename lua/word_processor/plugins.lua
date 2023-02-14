@@ -101,6 +101,9 @@ return packer.startup(function(use)
     end,
   })
 
+  -- which key
+  use("folke/which-key.nvim")
+
   -- treesitter
   use({
     "nvim-treesitter/nvim-treesitter",
@@ -138,6 +141,9 @@ return packer.startup(function(use)
   -- snippets
   use("L3MON4D3/LuaSnip")
   use("rafamadriz/friendly-snippets")
+
+  -- misc utilities
+  use("nathom/filetype.nvim")
 
   if PACKER_BOOTSTRAP then
     require("packer").sync()

@@ -22,16 +22,20 @@ local completion = null_ls.builtins.completion
 null_ls.setup({
   debug = true,
   sources = {
+    -- actions
+    actions.proselint,
+
     -- diagnostics
-    null_ls.diagnostics.misspell,
-    null_ls.diagnostics.vale,
+    diagnostics.misspell,
+    diagnostics.vale,
 
     -- formatting
+    formatting.prettier,
     
     -- hover
     
     -- completion
-    null_ls.completion.spell,
+    completion.spell,
   },
   on_attach = function(client)
     if client.resolved_capabilities.document_formatting then
