@@ -23,22 +23,22 @@ null_ls.setup({
   debug = true,
   sources = {
     -- actions
-    actions.proselint,
+    -- actions.proselint,
 
     -- diagnostics
-    diagnostics.misspell,
-    diagnostics.vale,
+    -- diagnostics.cspell,
+    -- diagnostics.vale,
 
     -- formatting
-    formatting.prettier,
+    -- formatting.prettier,
     
     -- hover
     
     -- completion
-    completion.spell,
+    -- completion.spell,
   },
   on_attach = function(client)
-    if client.resolved_capabilities.document_formatting then
+    if client.server_capabilities.document_formatting then
       vim.cmd([[
         augroup LspFormatting
           autocmd! * <buffer>

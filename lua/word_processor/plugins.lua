@@ -115,8 +115,9 @@ return packer.startup(function(use)
   use("folke/tokyonight.nvim")
 
   -- LSP
-  use("neovim/nvim-lspconfig") -- enable lsp
-  use("williamboman/nvim-lsp-installer") -- simple to use language server installer
+  use("neovim/nvim-lspconfig") -------------- enable lsp
+  use("williamboman/mason.nvim") ------------ simple to use language server installer
+  use("williamboman/mason-lspconfig.nvim") -- simple to use language server installer
   use({
     "jose-elias-alvarez/null-ls.nvim",
     config = function()

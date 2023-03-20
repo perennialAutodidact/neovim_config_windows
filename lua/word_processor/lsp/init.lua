@@ -4,13 +4,15 @@ if not status_ok then
 end
 
 local modules = {
-  "lsp-installer",
+  -- "lsp-installer",
+  "mason",
+  "null-ls",
 }
 
 for i in ipairs(modules) do
   module = modules[i]
-  require("kg.word_processor.lsp." .. module)
+  require("word_processor.lsp." .. module)
 end
 
-require("kg.word_processor.lsp.handlers").setup()
--- require("kg.word_processor.lsp.null-ls")
+-- require("word_processor.lsp.handlers").setup()
+-- require("word_processor.lsp.null-ls")
